@@ -13,7 +13,7 @@ if __name__ == "__main__":
         display_name="chicago-crime-model-pipeline",
         template_path="chicago_crime_model_pipeline.json",
         job_id="chicago-crime-model-pipeline-{0}".format(TIMESTAMP),
-        parameter_values={"query_string": query_string, "year_query_param": 2001},
+        parameter_values={"query_string": query_string, "year_query_param": 2011},
         enable_caching=False
     )
     run.submit()

@@ -8,7 +8,7 @@ PIPELINE_ROOT = f"{BUCKET_NAME}pipeline_root/"
 
 
 @component(
-    packages_to_install=["google-cloud-bigquery", "pandas", "pyarrow"],
+    packages_to_install=["google-cloud-bigquery", "pandas", "pyarrow","db-dtypes],
     base_image="python:3.9",
     output_component_file="get_crime_dataset.yaml"
 )
@@ -19,7 +19,7 @@ def get_dataframe(
 ):
     from google.cloud import bigquery
 
-    bqclient = bigquery.Client(project="YOUR_PROJECT")
+    bqclient = bigquery.Client(project="{PROJECT_ID}")
 
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
@@ -37,7 +37,7 @@ def get_dataframe(
 
 
 @component(
-    packages_to_install=["sklearn", "pandas", "joblib"],
+    packages_to_install=["scikit-learn", "pandas", "joblib"],
     base_image="python:3.9",
     output_component_file="model_component.yaml",
 )
